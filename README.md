@@ -1,3 +1,2 @@
 # Distributed-Entreprise-Software-Development
-Group Project
-ldfsdfsd
+# review and analyse the case study
