@@ -1,5 +1,5 @@
 # Distributed-Entreprise-Software-Development
-## review and analyse the case study
+### Review and analyse the case study
 
 Producers within the Bristol Regional Food Network consist of forty local SMEs (small-to-medium enterprise) with varying levels of technical expertise, going from those using basic email ordering to others with a limited social media presence. They depend a lot on the marketplace platform that provides them a highly intuitive interfaces to list their products, update seasonal inventory, and track orders without requiring them to have an advanced technical training. Operationally, producers depend on the platform to guarantee a minimum 48-hour order preparation lead time and rely on the automated financial systems to distribute weekly payment settlements with clear audit trails for accounting. For specific product listings, they also depend on simulated external verification services to validate their organic certification claims. 
 
