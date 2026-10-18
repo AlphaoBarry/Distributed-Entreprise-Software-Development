@@ -33,3 +33,32 @@ During Sprint 0, our group has completed the following preparation tasks:
 2.  **Repository Setup:** Created this shared repository and established our project management approach using GitHub Projects.
 3.  **Case Study Analysis:** Reviewed the Bristol Regional Food Network case study and began identifying principal stakeholders (e.g., young professionals, community groups, producers).
 4.  **Functional Scoping:** Identified initial candidate major functionalities for review in Sprint 1.
+
+## Candidate Major Functionalities
+
+Ten candidate functionalities were identified from the Bristol Regional Food Network case study and Use Case 1 (Producer Product Listing and Inventory Management). Each was screened, which requires functionalities that demonstrate an end-to-end process, user interaction, automated processing, business decisions, external service interaction, and alternative and exception flows.
+
+### Screening Outcome
+
+The ten candidates were grouped into five outcomes:
+
+*   **Shortlisted (2):** Product listing and validation; Inventory and seasonal availability management.
+*   **Merged into the shortlisted pair (2):** Organic certification verification (into product listing) and seasonal product updates (into inventory management).
+*   **Backup option (1):** Surplus produce and last-minute discounts.
+*   **Out of scope, belonging to Use Cases 2 and 3 (3):** Multi-vendor ordering and payment, weekly producer settlement, and food quality incident and traceability.
+*   **Rejected (2):** Food miles calculation, and recipes and farm stories. Both contain limited process logic and few exception paths.
+
+### Proposed Major Functionalities
+
+1.  **Product Listing and Validation:** A producer submits product details, the system validates them, verifies any organic claim through an external or simulated certification service, and publishes the product. Exception paths include invalid data, an unavailable certification service, and failed verification.
+2.  **Inventory and Seasonal Availability Management:** A producer updates stock and seasonal availability. A product becomes unavailable automatically when stock reaches zero, and becomes available again on replenishment if it is still within its season. Exception paths include invalid updates and restocks outside the season.
+
+### Rationale
+
+Both functionalities originate directly from Use Case 1, which keeps the project scope clear and justifiable. Together they cover Camunda user tasks and Forms, service tasks, business rules, gateways, boundary events, and error handling. 
+
+### Next Steps
+
+*   Agree the two proposed functionalities with our tutor before detailed implementation begins.
+*   Confirm whether small extensions (such as a zero-stock notification or surplus discounts) are acceptable if the second functionality needs more depth.
+*   Link both functionalities to the strategic BPMN and i* models once these are drafted.
