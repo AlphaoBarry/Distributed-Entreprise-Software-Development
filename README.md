@@ -1,13 +1,14 @@
 
 
-#Establish an initial product backlog. 
+# Establish an initial product backlog. 
 
-##Objective 
+## Objective 
 
 To identify and prioritise  the initial system requirement for the producers Product Listing and inventory Management use Case.
 With the support of the backlog, this will help the team understand what the system needs to operate and organise the assignments for future sprints.
 
-##Initial Product Backlog 
+## Initial Product Backlog 
+
 | ID   | User Story | Priority |
 |------|------------|----------|
 | PB01 | As a producer, I want to add new products so that customers can purchase them. | Must |
@@ -21,7 +22,7 @@ With the support of the backlog, this will help the team understand what the sys
 | PB09 | As a producer, I want the system to manage certification verification failures so that my listing is not wrongly approved. | Must |
 | PB10 | As a producer, I want replenished products to become available again when they are still in season. | Must |
 
-##Example Acceptance Criteria
+## Example Acceptance Criteria
 
 PB01- adding New Products
 •	 With a registered producer enters a valid product information when they submit. 
@@ -80,7 +81,7 @@ PB10- Restoring availability after replenishment.
 •	Given the replenished stock is greater than zero and all required checks are valid, of ethe inventory update is saved then product become available for new orders.
 
 
-##Non-Functional Requirements 
+## Non-Functional Requirements 
 
  The listed non-functional requirements have been identified to ensure that the system operates reliably and accurately.
 
@@ -93,7 +94,7 @@ PB10- Restoring availability after replenishment.
 
 
 
-##Stakeholders
+## Stakeholders
 
  The following stakeholders are identified for the product listing and inventory Management  use case. 
 
@@ -105,7 +106,7 @@ PB10- Restoring availability after replenishment.
 | External Certification Verification Service | Responsible for checking organic certification details and returning verified results to the system. |
 | Application | The system that manages product listings, certification validation, inventory updates, and product availability. |
 
-##Prioritisation 
+## Prioritisation 
 
 MoSCoW  prioritisation has been used to identify the importance of each requirement.
 The main requirement  is classified as “Must”. as they are the primary core functionality described in the selected use case.
@@ -115,7 +116,7 @@ These priorities may be studied  and refined during sprint planning.
 
 
 
-##Definition of Done
+## Definition of Done
 •	Initial requirements have been identified.
 •	Requirements  have been written as user stories. 
 •	Each Requirement has been prioritised.
