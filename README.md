@@ -32,6 +32,7 @@ The listing, then the system accepts it.
 
 PB02 – Validating Product Information
 •	Given the producer enters a product details, when the listing is submitted, the system will then check that all mandatory fields are established, and the information is in the correct order. 
+
 •	Given information is identified, when validation is completed, it is then highlighted by the system showing the affected fields and requests corrections.	
 
 PB03- Correcting invalid information.
