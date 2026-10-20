@@ -118,11 +118,17 @@ These priorities may be studied  and refined during sprint planning.
 
 ## Definition of Done
 •	Initial requirements have been identified.
-•	Requirements  have been written as user stories. 
+
+•	Requirements  have been written as user stories.
+
 •	Each Requirement has been prioritised.
+
 •	Acceptance  criteria have been established for PB01-PB10
+
 •	Non-Functional requirement has been identified.
+
 •	Stakeholders have been identified. 
+
 •	The initial backlog  will be reviewed and agreed upon by the group. 
 
 
