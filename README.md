@@ -1,4 +1,4 @@
-<img width="4032" height="2004" alt="image" src="https://github.com/user-attachments/assets/5a1b1a5c-609b-497c-8bdf-a355d5f92fab" />
+
 
 #Establish an initial product backlog. 
 
