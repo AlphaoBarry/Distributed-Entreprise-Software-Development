@@ -31,11 +31,13 @@ The listing, then the system accepts it.
 •	  In the scenario given mandatory information is missing, the producer submits the listing, then the systems requests corrections.
 
 PB02 – Validating Product Information
+
 •	Given the producer enters a product details, when the listing is submitted, the system will then check that all mandatory fields are established, and the information is in the correct order. 
 
 •	Given information is identified, when validation is completed, it is then highlighted by the system showing the affected fields and requests corrections.	
 
 PB03- Correcting invalid information.
+
 •	Given the system Identifies incorrect product information when the producer submits the correct details for listing. Then the system identifies the updated information.
 
 •	Given all correction are now valid, the listing is resubmitted and the product can continue to the next stage for the publication process.
@@ -45,7 +47,9 @@ PB04- Verifying Organic Certification
 •	Given a producer listed a product as organic when the listing is submitted, the system requires valid certification or proof.
 
 •	Given the verification confirms the certification is valid, the results are received and then the system records the certification as verified.
+
 PB05- Publishing Verified Products
+
 •	Given a product has passed the required information and certification checks. The producer will submit the listing for publication and the system will make the product visible to customers.
 
 •	Given a product has not passed the required check, when the publication is attempted the system will be declined or prevent the listing  from being published.
@@ -58,6 +62,7 @@ PB06- Updating Inventory Quantities.
 •	Given  a producer enters an invalid quantity, for example a negative number  the system will reject the update and request a valid quantity.
 
 PB07- Out-Stock-Products
+
 •	Given a product’s quantity reaches zero, when the inventory is updated. The product will automatically become unavailable for new orders. 
 
 •	 Given stock is replenished within the seasonal available  period, when inventory is updated then the product becomes available again.
@@ -66,14 +71,13 @@ PB08- Managing Seasonal Availability
 •	Given a producer enters a valid seasonal  start and end date. The date is saved and the system records the dates.
 
 •	Given the current date is outside the product available season. The product then becomes unavailable for new orders.
+
 PB09- Handling Certification Verification Failure
+
 
 •	Given the external certification verification fails the systems records the failure and does not mark certification as verified.
 
 •	Given certification verification cannot be completed, when the producer views the listing the system will display  pending or failed verification status.
-
-
-
 
 PB10- Restoring availability after replenishment.
 
