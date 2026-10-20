@@ -24,5 +24,7 @@ Internal Actors (Platform Users)
 -	Marketplace Administrators: Authorised representatives who oversee platform operations. They are responsible for reviewing escalated quality incidents, deciding whether to close or further escalate issues, and ensuring overall platform compliance with data protection and financial regulations. 
 External Actors (Third-Party Services)
 -	External Payment Service (Simulated): Responsible for authorising customer transactions and providing status callbacks (success/declined) to the marketplace. 
--	Organic Certification Verification Service: An external registry queried by the marketplace to validate producer claims regarding organic status before publishing a product listing. 
+-	Organic Certification Verification Service: An external registry queried by the marketplace to validate producer claims regarding organic status before publishing a product listing.
+
+
 
