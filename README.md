@@ -62,3 +62,154 @@ Both functionalities originate directly from Use Case 1, which keeps the project
 *   Agree the two proposed functionalities with our tutor before detailed implementation begins.
 *   Confirm whether small extensions (such as a zero-stock notification or surplus discounts) are acceptable if the second functionality needs more depth.
 *   Link both functionalities to the strategic BPMN and i* models once these are drafted.
+
+## Identification and Scoping of the Two Major Functionalities
+
+Two major functionalities were selected from Use Case 1 (Producer Product Listing and Inventory Management) for detailed operational modelling and Camunda automation. Both are scoped below.
+
+### Functionality 1: Product Listing and Validation
+
+**Purpose:** Allow a registered producer to list a new product with accurate, validated information, including any organic claim, so that it can be published for customers.
+
+**Business goals supported:** Simple product listing for producers with varied technical skill; trustworthy food information for customers (allergens, organic status, best-before date, farm origin).
+
+| Aspect | Scope |
+|--------|-------|
+| **Actors** | Producer (initiates); Marketplace administrator (manual review); Organic certification service (external or simulated); Marketplace system (validation and publishing) |
+| **Trigger** | A registered producer chooses to add a new product |
+| **In scope** | Product submission form (name, description, category, price, quantity, availability period, farm origin); optional details (harvest date, allergens, organic certification, best-before date); validation of mandatory and invalid fields with a correction loop; organic certification check; fallback when the service is unavailable or the check fails; publication of the validated product |
+| **Out of scope** | Customer browsing and search; ordering and payment; integration with a real certification body (a mock service is used) |
+| **Key decisions** | Is all mandatory data present and valid? Is an organic claim made? Was the certificate verified? |
+
+**Main flow**
+
+1.  The producer submits the product form.
+2.  The system validates mandatory and format rules.
+3.  If an organic claim is made, the system verifies the certificate.
+4.  When all checks pass, the product is published and becomes available to customers.
+
+**Alternative and exception paths**
+
+*   Missing or invalid data: the producer is asked to correct and resubmit.
+*   Certification service unavailable: retry, then route to an administrator for manual review or save as a draft.
+*   Certification fails: the organic claim is rejected, and the producer may amend or remove it.
+
+**Planned Camunda elements:** user task with Camunda Form (producer submission); service task with retries (certification check); exclusive gateways (validation and verification outcomes); error or timer boundary event (unavailable service); user task with Form (administrator review); process variables for product data and verification status.
+
+**Supporting services:** mock organic certification service (REST endpoint); product data store.
+
+### Functionality 2: Inventory and Seasonal Availability Management
+
+**Purpose:** Keep each product's availability accurate by updating stock and season information, and by making products unavailable or available again automatically according to business rules.
+## Identification and Scoping of the Two Major Functionalities
+
+Two major functionalities were selected from Use Case 1 (Producer Product Listing and Inventory Management) for detailed operational modelling and Camunda automation. Both are scoped below. The scope is a proposal, subject to agreement with the module team before detailed implementation begins.
+
+### Functionality 1: Product Listing and Validation
+
+**Purpose:** Allow a registered producer to list a new product with accurate, validated information, including any organic claim, so that it can be published for customers.
+
+**Business goals supported:** Simple product listing for producers with varied technical skill; trustworthy food information for customers (allergens, organic status, best-before date, farm origin).
+
+| Aspect | Scope |
+|--------|-------|
+| **Actors** | Producer (initiates); Marketplace administrator (manual review); Organic certification service (external or simulated); Marketplace system (validation and publishing) |
+| **Trigger** | A registered producer chooses to add a new product |
+| **In scope** | Product submission form (name, description, category, price, quantity, availability period, farm origin); optional details (harvest date, allergens, organic certification, best-before date); validation of mandatory and invalid fields with a correction loop; organic certification check; fallback when the service is unavailable or the check fails; publication of the validated product |
+| **Out of scope** | Customer browsing and search; ordering and payment; integration with a real certification body (a mock service is used) |
+| **Key decisions** | Is all mandatory data present and valid? Is an organic claim made? Was the certificate verified? |
+
+**Main flow**
+
+1.  The producer submits the product form.
+2.  The system validates mandatory and format rules.
+3.  If an organic claim is made, the system verifies the certificate.
+4.  When all checks pass, the product is published and becomes available to customers.
+
+**Alternative and exception paths**
+
+*   Missing or invalid data: the producer is asked to correct and resubmit.
+*   Certification service unavailable: retry, then route to an administrator for manual review or save as a draft.
+*   Certification fails: the organic claim is rejected, and the producer may amend or remove it.
+
+**Planned Camunda elements:** user task with Camunda Form (producer submission); service task with retries (certification check); exclusive gateways (validation and verification outcomes); error or timer boundary event (unavailable service); user task with Form (administrator review); process variables for product data and verification status.
+
+**Supporting services:** mock organic certification service (REST endpoint); product data store.
+
+### Functionality 2: Inventory and Seasonal Availability Management
+
+**Purpose:** Keep each product's availability accurate by updating stock and season information, and by making products unavailable or available again automatically according to business rules.
+
+**Business goals supported:** Producers can manage frequent seasonal changes without technical expertise; customers only see products that can actually be bought.
+
+| Aspect | Scope |
+|--------|-------|
+| **Actors** | Producer (initiates); Marketplace system (applies availability rules); Notification service (optional, if agreed) |
+| **Trigger** | A producer updates quantity or availability period, or stock changes through another event |
+| **In scope** | Form for updating quantity and seasonal availability; validation of updates (for example no negative quantity, valid date range); automatic unavailability at zero stock; automatic restoration on replenishment within the season; recording of availability status for use by other parts of the platform |
+| **Out of scope** | Reduction of stock through customer orders (belongs to ordering, but the process should expose a way to be called later); surplus discounting |
+| **Key decisions** | Is the update valid? Is stock zero? Is the product within its availability period? |
+
+**Main flow**
+
+1.  The producer submits a stock or season update.
+2.  The system validates and saves the update.
+3.  The system evaluates availability: stock above zero and the current date within the season.
+4.  The product status is set to available or unavailable accordingly.
+
+**Alternative and exception paths**
+
+*   Invalid update: rejected with a message to the producer.
+*   Restock outside the season: the product remains unavailable.
+*   Season dates changed on a live product: availability is re-evaluated.
+*   Possible extensions, if agreed: producer notification when stock reaches zero, and a scheduled expiry at season end.
+
+**Planned Camunda elements:** user task with Camunda Form (stock and season update); business rule logic (DMN decision table or gateway conditions) for the availability rule; service task to update product status; timer event if the season-end extension is agreed; process variables (`quantity`, `seasonStart`, `seasonEnd`, `availabilityStatus`).
+
+**Supporting services:** product and inventory service (shared with Functionality 1); notification service, if the extension is agreed.
+
+### Relationship Between the Two Functionalities
+
+Functionality 1 creates and publishes a product. Functionality 2 keeps that product's availability accurate for as long as it is on sale. Both operate on the same product data, which supports reuse and integration in Task 2.
+
+### Traceability
+
+Links to the strategic BPMN process names and i* elements (producer goals, softgoals and dependencies on the certification service) will be added once those models are drafted.
+
+### Questions for the Module Team
+
+1.  Are the two functionalities sufficiently substantial, with both drawn from Use Case 1?
+2.  Is a simulated certification service acceptable for the external service requirement?
+3.  Are small extensions to Functionality 2 acceptable (zero-stock notification, season-end timer)?
+4.  Which Camunda version should be targeted?
+**Business goals supported:** Producers can manage frequent seasonal changes without technical expertise; customers only see products that can actually be bought.
+
+| Aspect | Scope |
+|--------|-------|
+| **Actors** | Producer (initiates); Marketplace system (applies availability rules); Notification service (optional, if agreed) |
+| **Trigger** | A producer updates quantity or availability period, or stock changes through another event |
+| **In scope** | Form for updating quantity and seasonal availability; validation of updates (for example no negative quantity, valid date range); automatic unavailability at zero stock; automatic restoration on replenishment within the season; recording of availability status for use by other parts of the platform |
+| **Out of scope** | Reduction of stock through customer orders (belongs to ordering, but the process should expose a way to be called later); surplus discounting |
+| **Key decisions** | Is the update valid? Is stock zero? Is the product within its availability period? |
+
+**Main flow**
+
+1.  The producer submits a stock or season update.
+2.  The system validates and saves the update.
+3.  The system evaluates availability: stock above zero and the current date within the season.
+4.  The product status is set to available or unavailable accordingly.
+
+**Alternative and exception paths**
+
+*   Invalid update: rejected with a message to the producer.
+*   Restock outside the season: the product remains unavailable.
+*   Season dates changed on a live product: availability is re-evaluated.
+*   Possible extensions, if agreed: producer notification when stock reaches zero, and a scheduled expiry at season end.
+
+**Planned Camunda elements:** user task with Camunda Form (stock and season update); business rule logic (DMN decision table or gateway conditions) for the availability rule; service task to update product status; timer event if the season-end extension is agreed; process variables (`quantity`, `seasonStart`, `seasonEnd`, `availabilityStatus`).
+
+**Supporting services:** product and inventory service (shared with Functionality 1); notification service, if the extension is agreed.
+
+### Relationship Between the Two Functionalities
+
+Functionality 1 creates and publishes a product. Functionality 2 keeps that product's availability accurate for as long as it is on sale. Both operate on the same product data, which supports reuse and integration in Task 2.
