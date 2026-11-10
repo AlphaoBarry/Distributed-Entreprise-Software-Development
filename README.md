@@ -25,3 +25,9 @@ This stakeholder analysis identifies the main stakeholders involved in the Brist
 - The system must handle missing or invalid information by asking producers to correct it.
 - The system must account for verification failures or an unavailable certification service.
 - The development team depends on clear stakeholder requirements to implement and test the process correctly.
+
+
+
+# Sprint 2 - Initial Service-Task Implementation
+
+Initial service-task implementation has been completed in Camunda Web Modeler.  Service tasks have been given appropriate job types to support their later implementation and execution.
