@@ -28,6 +28,14 @@ This stakeholder analysis identifies the main stakeholders involved in the Brist
 
 
 
-# Sprint 2 - Initial Service-Task Implementation
+# Sprint 2
+
+## Initial Service-Task Implementation
 
 Initial service-task implementation has been completed in Camunda Web Modeler.  Service tasks have been given appropriate job types to support their later implementation and execution.
+
+## Camunda User Tasks and Forms
+
+Camunda user tasks and forms were implemented for the main user interaction points in the product listing and ordering process.  The <b> `Enter Product Details` </b> and <b> `Revise Product Information` </b> tasks use the same Camunda Form to allow producers to enter and update product information.  The <b> `Checkout` </b> task uses a separate Camunda Form to collect customer details, delivery or collection preference, delivery address, and payment method.
+
+Other user tasks, such as reviewing, requesting revisions, approving products, and adding products to the basket, do not require forms because they do not require additional information to be entered at that stage.
